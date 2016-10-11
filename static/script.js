@@ -1,3 +1,9 @@
+/*
+the implementation was inspired by the wonderful drawing example on the p5.js website -
+http://p5js.org/examples/hello-p5-drawing.html
+*/
+
+
 var drawing = [];
 var saveSeconds;
 
