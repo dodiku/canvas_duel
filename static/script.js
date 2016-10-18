@@ -14,11 +14,12 @@ function setup() {
 }
 
 function draw() {
+  cursor(ARROW);
   background('#ffffff');
 
   // adding drawing dots to the drawing array
   if (mouseIsPressed) {
-    drawing.push(new FadingDot(mouseX,mouseY));
+    drawing.push(new FadingDot(mouseX,mouseY,pmouseX, pmouseY));
   }
 
   // drwaing dots from the array
@@ -44,9 +45,11 @@ function keyPressed() {
   }
 }
 
-function FadingDot(x, y) {
+function FadingDot(x, y, px, py) {
   this.x = x;
   this.y = y;
+  this.px = px;
+  this.py = py;
   this.fill = 200;
   this.lifespan = 500;
   this.saved = 'false';
@@ -56,7 +59,9 @@ drawing.draw = function() {
   for (var i = 0; i < this.length; i++) {
     stroke(this[i].fill, this[i].lifespan/4);
     fill(this[i].fill, this[i].lifespan/4);
-    ellipse(this[i].x,this[i].y, 6, 6);
+    // ellipse(this[i].x,this[i].y, 6, 6);
+    strokeWeight(2);
+    line(this[i].x,this[i].y,this[i].px,this[i].py);
   }
 };
 
